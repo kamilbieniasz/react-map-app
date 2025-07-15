@@ -11,11 +11,11 @@ export default function DrawToolbar({ setEditMode, exportGeoJson }) {
     return (
         <div style={{ marginBottom: 16 }}>
             <ButtonGroup variant="contained" color="primary">
-                <Button onClick={() => setEditMode(() => DrawPolygonMode)}>Rysuj poligon</Button>
-                <Button onClick={() => setEditMode(() => DrawLineStringMode)}>Rysuj linię</Button>
-                <Button onClick={() => setEditMode(() => ModifyMode)}>Edycja</Button>
-                <Button onClick={() => setEditMode(() => ViewMode)}>Podgląd</Button>
-                <Button color="secondary" onClick={exportGeoJson}>Eksportuj GeoJSON</Button>
+                <Button onClick={() => setEditMode(() => DrawPolygonMode)}>Draw polygon</Button>
+                <Button onClick={() => setEditMode(() => DrawLineStringMode)}>Draw linestring</Button>
+                <Button onClick={() => setEditMode(() => ModifyMode)}>Edit</Button>
+                <Button onClick={() => setEditMode(() => ViewMode)}>View</Button>
+                <Button color="secondary" onClick={exportGeoJson}>Export GeoJSON</Button>
             </ButtonGroup>
         </div>
     );

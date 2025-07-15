@@ -12,10 +12,10 @@ export default function ViewToggle() {
             style={{ marginBottom: 16 }}
         >
             <ToggleButton value="/map" component={Link} to="/map">
-                Mapa
+                Map
             </ToggleButton>
             <ToggleButton value="/table" component={Link} to="/table">
-                Tabela
+                Table
             </ToggleButton>
         </ToggleButtonGroup>
     );

@@ -14,16 +14,21 @@ export default function SearchBar({ setCenter }) {
 
     return (
         <div style={{ marginBottom: 16 }}>
-            <TextField
-                label="Wyszukaj miejsce lub współrzędne"
-                value={query}
-                onChange={e => setQuery(e.target.value)}
-                size="small"
-                style={{ marginRight: 8, width: "400px" }}
-            />
-            <Button variant="outlined" onClick={handleSearch}>
-                Szukaj
-            </Button>
+            <form onSubmit={async e => {
+                e.preventDefault();
+                await handleSearch();
+            }}>
+                <TextField
+                    label="Search for a place or coordinates"
+                    value={query}
+                    onChange={e => setQuery(e.target.value)}
+                    size="small"
+                    style={{ marginRight: 8, width: "400px" }}
+                />
+                <Button variant="outlined" type="submit">
+                    Search
+                </Button>
+            </form>
         </div>
     );
 }

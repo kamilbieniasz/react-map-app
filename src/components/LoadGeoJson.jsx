@@ -3,11 +3,11 @@ import { TextField, Button, MenuItem } from "@material-ui/core";
 
 const EXAMPLE_URLS = [
     {
-        label: "Granice Państw (github)",
+        label: "Country borders (github)",
         url: "https://raw.githubusercontent.com/datasets/geo-countries/master/data/countries.geojson",
     },
     {
-        label: "Nowy Jork dzielnice (github)",
+        label: "New york boroughs (github)",
         url: "https://raw.githubusercontent.com/dwillis/nyc-maps/master/boroughs.geojson",
     }
 ];
@@ -22,9 +22,13 @@ export default function LoadGeoJson({ onLoad }) {
         setLoading(true);
         try {
             const res = await fetch(url);
-            if (!res.ok) throw new Error(`Nie można pobrać pliku: ${res.statusText}`);
+            if (!res.ok) {
+                throw new Error(`Cannot load GeoJSON: ${res.statusText}`);
+            }
             const data = await res.json();
-            if (data.type !== "FeatureCollection") throw new Error("To nie jest poprawny GeoJSON FeatureCollection");
+            if (data.type !== "FeatureCollection") {
+                throw new Error("Invalid GeoJSON");
+            }
             onLoad(data);
         } catch (err) {
             setError(err.message);
@@ -45,12 +49,12 @@ export default function LoadGeoJson({ onLoad }) {
             <TextField
                 select
                 value={url}
-                label="Przykład"
+                label="Examples"
                 onChange={e => setUrl(e.target.value)}
                 style={{ minWidth: 220 }}
                 size="small"
             >
-                <MenuItem value="">(Wybierz przykład...)</MenuItem>
+                <MenuItem value="">(Select GeoJSON URL...)</MenuItem>
                 {EXAMPLE_URLS.map(opt => (
                     <MenuItem key={opt.url} value={opt.url}>{opt.label}</MenuItem>
                 ))}
@@ -61,7 +65,7 @@ export default function LoadGeoJson({ onLoad }) {
                 onClick={handleLoad}
                 disabled={loading || !url}
             >
-                {loading ? "Ładowanie..." : "Wczytaj GeoJSON"}
+                {loading ? "Loading..." : "Load GeoJSON"}
             </Button>
             {error && (
                 <span style={{ color: "red", marginLeft: 8 }}>{error}</span>
