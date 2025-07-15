@@ -11,7 +11,7 @@ import {ViewMode} from "nebula.gl";
 import "./App.css";
 
 export default function App() {
-    const [mapCenter, setMapCenter] = useState([19.945, 50.0647]); // np. Kraków
+    const [mapCenter, setMapCenter] = useState([19.945, 50.0647]);
     const [editMode, setEditMode] = useState(() => ViewMode);
 
     const {
