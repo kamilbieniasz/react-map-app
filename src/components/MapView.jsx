@@ -28,13 +28,12 @@ export default function MapView({ geoJson, setGeoJson, editMode, mapCenter, sele
                     ? [255, 0, 0, 255]
                     : [0, 120, 255, 200]
             },
-
             getLineWidth: 2
         })
     ];
 
     return (
-        <div style={{ position: "relative", height: "70dvh" }}>
+        <div style={{ position: "relative", height: "65dvh" }}>
             <DeckGL
                 initialViewState={{
                     longitude: mapCenter[0],

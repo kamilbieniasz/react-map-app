@@ -9,6 +9,7 @@ import useGeoJson from "./hooks/useGeoJson";
 import { exportGeoJson } from "./utils/geojson";
 import {ViewMode} from "nebula.gl";
 import "./App.css";
+import LoadGeoJson from "./components/LoadGeoJson";
 
 export default function App() {
     const [mapCenter, setMapCenter] = useState([19.945, 50.0647]);
@@ -29,6 +30,7 @@ export default function App() {
     return (
         <Router>
             <div style={{ padding: 16 }}>
+                <LoadGeoJson onLoad={setGeoJson} />
                 <SearchBar setCenter={handleSetCenter} />
                 <ViewToggle />
                 <DrawToolbar
